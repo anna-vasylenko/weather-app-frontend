@@ -1,0 +1,13 @@
+.container {
+  width: 100vw;
+  height: 100vh - 60px;
+  background-image: url("../../images/bg_image.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: calc(50% + 300px) center;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}

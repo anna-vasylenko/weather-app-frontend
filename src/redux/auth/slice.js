@@ -24,13 +24,13 @@ const authSlice = createSlice({
     builder
       .addCase(registerThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.token = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isError = null;
       })
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.token = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isError = null;
       })
@@ -44,7 +44,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUserThunk.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })

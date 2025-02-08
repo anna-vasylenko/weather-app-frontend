@@ -2,5 +2,8 @@
   --font-family: "Montserrat", sans-serif;
   --second-family: "Abril Fatface", serif;
   --transition: all 0.3s ease;
-  --scale: scale(1.1);
+  --scale: scale(1.05);
+  --accent-color: #ff6b08;
+  --hover: #e25e05;
+  --grey-text: #898f9f;
 }

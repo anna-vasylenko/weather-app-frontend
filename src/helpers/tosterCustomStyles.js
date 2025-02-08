@@ -1,4 +1,4 @@
-export const toasterCustomStyles = {
+export const tosterCustomStyles = {
   autoClose: 2000,
   hideProgressBar: false,
   closeOnClick: true,
