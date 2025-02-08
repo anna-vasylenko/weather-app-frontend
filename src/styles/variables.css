@@ -1,0 +1,6 @@
+:root {
+  --font-family: "Montserrat", sans-serif;
+  --second-family: "Abril Fatface", serif;
+  --transition: all 0.3s ease;
+  --scale: scale(1.1);
+}
