@@ -1,5 +1,11 @@
+import Navigation from "../../components/Navigation/Navigation";
+
 const ObservationPage = () => {
-  return <div>ObservationPage</div>;
+  return (
+    <div>
+      <Navigation />
+    </div>
+  );
 };
 
 export default ObservationPage;

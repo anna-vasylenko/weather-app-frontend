@@ -1,5 +1,11 @@
+import Navigation from "../../components/Navigation/Navigation";
+
 const ForecastPade = () => {
-  return <div>ForecastPade</div>;
+  return (
+    <div>
+      <Navigation />
+    </div>
+  );
 };
 
 export default ForecastPade;

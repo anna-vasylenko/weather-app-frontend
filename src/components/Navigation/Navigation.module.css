@@ -1,0 +1,45 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 0 20px 0;
+  gap: 15px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.navText {
+  font-size: 14px;
+  font-weight: 400;
+  color: #242a37;
+}
+
+.linkActive > .navText {
+  font-weight: 700;
+}
+
+.linkActive > .wrapper {
+  background: var(--accent-color);
+}
+
+.linkActive > .wrapper > .icon {
+  fill: #ffffff;
+}
+
+.wrapper {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  fill: #242a37;
+  stroke: transparent;
+}
