@@ -12,6 +12,7 @@ const initialState = {
     name: null,
     email: null,
   },
+  location: null,
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -20,6 +21,11 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    updateLocation(state, action) {
+      state.location = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registerThunk.fulfilled, (state, action) => {
@@ -45,6 +51,7 @@ const authSlice = createSlice({
       })
       .addCase(refreshUserThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        state.token = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
@@ -66,4 +73,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { updateLocation } = authSlice.actions;
 export const authReducer = authSlice.reducer;

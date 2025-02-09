@@ -19,6 +19,10 @@ export const registerThunk = createAsyncThunk(
     try {
       const { data } = await axios.post("/auth/register", credentials);
 
+      localStorage.setItem("accessToken", data.data.accessToken);
+      localStorage.setItem("refreshToken", data.data.refreshToken);
+
+      setAuthHeader(data.data.accessToken);
       return data.data;
     } catch (error) {
       const status = error.response?.status;
@@ -103,11 +107,12 @@ export const refreshUserThunk = createAsyncThunk(
     }
 
     try {
-      setAuthHeader(persistedToken);
       const { data } = await axios.post("/auth/refresh", { refreshToken });
-      console.log(data.data.accessToken);
 
       localStorage.setItem("accessToken", data.data.accessToken);
+      localStorage.setItem("refreshToken", data.data.refreshToken);
+
+      setAuthHeader(data.data.accessToken);
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

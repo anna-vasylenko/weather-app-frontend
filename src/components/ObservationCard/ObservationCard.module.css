@@ -1,0 +1,42 @@
+.card {
+  width: 600px;
+  box-shadow: 0 2px 3px 0 rgba(9, 30, 63, 0.1);
+  background: #fff;
+  padding: 20px 30px;
+  margin-top: 20px;
+}
+
+.date {
+  font-weight: 700;
+  font-size: 16px;
+  color: #242a37;
+  margin-bottom: 20px;
+}
+
+.list {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.item {
+  width: calc(50% - 20px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 14px;
+  color: #898f9f;
+}
+
+.value {
+  font-weight: 500;
+  font-size: 14px;
+  color: #242a37;
+}

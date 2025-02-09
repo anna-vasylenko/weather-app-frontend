@@ -1,0 +1,98 @@
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: calc(45vw - 40px);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.selectInput :global(.react-select__control) {
+  position: relative;
+  width: 350px;
+  height: 42px;
+  border-radius: 0%;
+  letter-spacing: -0.28px;
+  color: #242a37;
+  background-color: #fff;
+  border: 1px solid #fff;
+  box-shadow: inset 0 1px 2px 0 rgba(29, 29, 27, 0.15);
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.selectInput :global(.react-select__control):hover {
+  box-shadow: none;
+  border: 1px solid var(--accent-color);
+  outline: none;
+}
+
+.selectInput :global(.react-select__control--is-focused) {
+  box-shadow: none;
+  border: 1px solid var(--accent-color);
+  outline: none;
+}
+
+.selectInput :global(.react-select__placeholder) {
+  color: var(--grey-text);
+}
+
+.selectInput :global(.react-select__option) {
+  color: #242a37;
+  cursor: pointer;
+}
+
+.selectInput :global(.react-select__option:hover) {
+  color: #fff;
+  background-color: var(--accent-color);
+}
+
+.selectInput :global(.react-select__option:focus) {
+  color: #fff;
+  background-color: var(--accent-color);
+}
+
+.selectInput :global(.react-select__option--is-selected) {
+  color: #fff;
+  background-color: var(--accent-color);
+}
+
+.selectInput :global(.react-select__dropdown-indicator) {
+  border: none;
+  color: var(--accent-color);
+}
+
+.selectInput :global(.react-select__dropdown-indicator:hover) {
+  border: none;
+  color: var(--accent-color);
+}
+
+.selectInput
+  :global(.react-select__control--menu-is-open)
+  :global(.react-select__dropdown-indicator) {
+  transform: rotate(180deg);
+}
+
+.label {
+  font-size: 14px;
+  color: var(--grey-text);
+}
+
+.btnSubmit {
+  display: block;
+  width: 181px;
+  height: 42px;
+  margin-top: 10px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #fff;
+  background-color: var(--accent-color);
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: var(--hover);
+  }
+}
