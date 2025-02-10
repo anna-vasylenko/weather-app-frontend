@@ -1,0 +1,137 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+}
+
+.input {
+  position: relative;
+  width: 350px;
+  height: 42px;
+  padding: 13px 17px;
+  letter-spacing: -0.28px;
+  color: #242a37;
+  background-color: #fff;
+  border: 1px solid #fff;
+  box-shadow: inset 0 1px 2px 0 rgba(29, 29, 27, 0.15);
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  &:hover,
+  &:focus {
+    border: 1px solid var(--accent-color);
+    opacity: 1;
+  }
+}
+
+.input::placeholder {
+  color: var(--grey-text);
+  opacity: 0.5;
+}
+
+.label {
+  font-size: 14px;
+  color: var(--grey-text);
+}
+
+.errorMessage {
+  position: fixed;
+  font-size: 11px;
+  color: var(--accent-color);
+}
+
+.btnSubmit {
+  display: block;
+  width: 350px;
+  height: 42px;
+  padding: 13px 17px;
+  margin-top: 10px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #fff;
+  background-color: var(--accent-color);
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: var(--hover);
+  }
+}
+
+.selectInput :global(.react-select__control) {
+  position: relative;
+  width: 350px;
+  height: 42px;
+  border-radius: 0%;
+  letter-spacing: -0.28px;
+  color: #242a37;
+  background-color: #fff;
+  border: 1px solid #fff;
+  box-shadow: inset 0 1px 2px 0 rgba(29, 29, 27, 0.15);
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.selectInput :global(.react-select__control):hover {
+  box-shadow: none;
+  border: 1px solid var(--accent-color);
+  outline: none;
+}
+
+.selectInput :global(.react-select__control--is-focused) {
+  box-shadow: none;
+  border: 1px solid var(--accent-color);
+  outline: none;
+}
+
+.selectInput :global(.react-select__placeholder) {
+  color: var(--grey-text);
+}
+
+.selectInput :global(.react-select__option) {
+  color: #242a37;
+  cursor: pointer;
+}
+
+.selectInput :global(.react-select__option:hover) {
+  color: #fff;
+  background-color: var(--accent-color);
+}
+
+.selectInput :global(.react-select__option:focus) {
+  color: #fff;
+  background-color: var(--accent-color);
+}
+
+.selectInput :global(.react-select__option--is-selected) {
+  color: #fff;
+  background-color: var(--accent-color);
+}
+
+.selectInput :global(.react-select__dropdown-indicator) {
+  border: none;
+  color: var(--accent-color);
+}
+
+.selectInput :global(.react-select__dropdown-indicator:hover) {
+  border: none;
+  color: var(--accent-color);
+}
+
+.selectInput
+  :global(.react-select__control--menu-is-open)
+  :global(.react-select__dropdown-indicator) {
+  transform: rotate(180deg);
+}

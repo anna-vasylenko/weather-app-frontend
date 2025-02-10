@@ -56,24 +56,6 @@
   font-size: 11px;
   color: var(--accent-color);
 }
-.passwordWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.eyeButton {
-  position: absolute;
-  right: 18px;
-  display: flex;
-  align-items: center;
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--accent-color);
-  opacity: 0.4;
-}
 
 .btnSubmit {
   display: block;

@@ -1,11 +1,12 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import logo from "../../images/logo.webp";
-import s from "./Header.module.css";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import LogOut from "../LogOut/LogOut";
 import Profile from "../Profile/Profile";
+
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import logo from "../../images/logo.webp";
+import s from "./Header.module.css";
 
 const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

@@ -1,16 +1,16 @@
+import { useId } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import Select from "react-select";
 import clsx from "clsx";
-import { useId } from "react";
-import { Form, Formik } from "formik";
 
-import { updateLocation } from "../../redux/auth/slice";
-import { selectLocations } from "../../redux/locations/selectors.js";
+import { selectLocations } from "../../redux/locations/selectors";
+import { addForecastSchema } from "../../helpers/addForecastSchema";
+import { selectLocation } from "../../redux/auth/selectors";
 
-import s from "./SearchBox.module.css";
-import { selectLocation } from "../../redux/auth/selectors.js";
+import s from "./ForecastForm.module.css";
 
-const SearchBox = () => {
+const ForecastForm = () => {
   const dispatch = useDispatch();
   const locations = useSelector(selectLocations);
   const currentLocation = useSelector(selectLocation);
@@ -27,18 +27,24 @@ const SearchBox = () => {
       locationsOptions.find(
         (option) => option.value === currentLocation?._id
       ) || null,
+    days: "",
   };
 
-  const handleSubmit = (values) => {
-    const { location } = values;
+  const handleSubmit = (values, action) => {
+    const { location, days } = values;
 
-    dispatch(updateLocation({ name: location.label, _id: location.value }));
+    console.log({ locationId: location.value, days });
+    action.resetForm();
   };
 
   return (
-    <div>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        {({ setFieldValue, values }) => (
+    <div className={s.wrapper}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={addForecastSchema}
+      >
+        {({ values, setFieldValue }) => (
           <Form className={s.form}>
             <div>
               <label className={s.label} htmlFor={locationFieldId}>
@@ -63,8 +69,20 @@ const SearchBox = () => {
               />
             </div>
 
-            <button type="submit" className={s.btnSubmit}>
-              Обрати
+            <label className={s.label}>
+              Кількість днів :
+              <div>
+                <Field name="days" className={s.input} placeholder="7" />
+              </div>
+              <ErrorMessage
+                name="days"
+                component="span"
+                className={s.errorMessage}
+              />
+            </label>
+
+            <button className={s.btnSubmit} type="submit">
+              Сформувати прогноз
             </button>
           </Form>
         )}
@@ -73,4 +91,4 @@ const SearchBox = () => {
   );
 };
 
-export default SearchBox;
+export default ForecastForm;

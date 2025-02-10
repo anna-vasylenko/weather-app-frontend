@@ -1,0 +1,12 @@
+.container {
+  width: 600px;
+  height: 60vh;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
