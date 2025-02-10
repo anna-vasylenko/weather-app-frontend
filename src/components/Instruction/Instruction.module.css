@@ -1,0 +1,42 @@
+.list {
+  width: 600px;
+  box-shadow: 0 2px 3px 0 rgba(9, 30, 63, 0.1);
+  background: #fff;
+  padding: 20px 30px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 19px;
+  color: #242a37;
+  margin-bottom: 16px;
+}
+
+.icon {
+  fill: var(--accent-color);
+  stroke: transparent;
+}
+.mainText {
+  font-weight: 600;
+  font-size: 16px;
+  color: #242a37;
+  margin-bottom: 8px;
+}
+
+.secondText {
+  font-weight: 400;
+  font-size: 14px;
+  color: #898f9f;
+}

@@ -1,0 +1,18 @@
+.buttonLogOut {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 2.71429;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #242a37;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+  }
+}

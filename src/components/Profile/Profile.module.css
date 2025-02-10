@@ -1,0 +1,25 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33px;
+  height: 33px;
+  border-radius: 100%;
+  font-weight: 600;
+  font-size: 14px;
+  color: #242a37;
+  background-color: #f5f7fa;
+}
+
+.name {
+  font-weight: 400;
+  font-size: 14px;
+  color: #242a37;
+}

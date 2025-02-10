@@ -55,7 +55,7 @@ const SearchBox = () => {
             </div>
 
             <button type="submit" className={s.btnSubmit}>
-              Оновити
+              Обрати
             </button>
           </Form>
         )}

@@ -4,6 +4,7 @@ import { selectObservations } from "../../redux/observations/selectors";
 import ObservationCard from "../ObservationCard/ObservationCard";
 
 import s from "./ObservationList.module.css";
+import Instruction from "../Instruction/Instruction";
 
 const ObservationList = () => {
   const observations = useSelector(selectObservations);
@@ -11,7 +12,7 @@ const ObservationList = () => {
   return (
     <>
       {observations.length === 0 ? (
-        <p>Додайте ваші спостереження</p>
+        <Instruction />
       ) : (
         <ul className={s.list}>
           {observations.map((observation) => (
