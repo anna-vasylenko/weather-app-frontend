@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Navigation from "../../components/Navigation/Navigation";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
@@ -7,12 +7,14 @@ import ForecastForm from "../../components/ForecastForm/ForecastForm";
 import ForecastTable from "../../components/ForecastTable/ForecastTable";
 import Graph from "../../components/Graph/Graph";
 import Button from "../../components/Button/Button";
+import Instruction from "../../components/Instruction/Instruction";
 
 import { getLocations } from "../../redux/locations/operations";
 import s from "./ForecastPage.module.css";
 
 const ForecastPade = () => {
   const dispatch = useDispatch();
+  const [showForecast, setShowForecast] = useState(false);
 
   useEffect(() => {
     dispatch(getLocations());
@@ -22,13 +24,17 @@ const ForecastPade = () => {
     <div className={s.page}>
       <div>
         <Navigation />
-        <ForecastForm />
-        <Graph />
-        <Button />
+        <ForecastForm onSubmitSuccess={() => setShowForecast(true)} />
+        {showForecast && (
+          <>
+            <Graph /> <Button />
+          </>
+        )}
       </div>
       <div>
         <WeatherCard />
-        <ForecastTable />
+        {!showForecast && <Instruction />}
+        {showForecast && <ForecastTable />}
       </div>
     </div>
   );

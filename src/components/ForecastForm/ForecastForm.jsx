@@ -10,7 +10,7 @@ import { selectLocation } from "../../redux/auth/selectors";
 
 import s from "./ForecastForm.module.css";
 
-const ForecastForm = () => {
+const ForecastForm = ({ onSubmitSuccess }) => {
   const dispatch = useDispatch();
   const locations = useSelector(selectLocations);
   const currentLocation = useSelector(selectLocation);
@@ -35,6 +35,7 @@ const ForecastForm = () => {
 
     console.log({ locationId: location.value, days });
     action.resetForm();
+    onSubmitSuccess();
   };
 
   return (
