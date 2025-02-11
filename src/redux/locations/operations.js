@@ -19,3 +19,20 @@ export const getLocations = createAsyncThunk(
     }
   }
 );
+
+export const getLocation = createAsyncThunk(
+  "locations/getLocation",
+  async ({ id }, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/locations/${id}`);
+      toast.success(`Дані про локацію ${data.data.name} успішно завантажені`);
+      return data.data;
+    } catch (error) {
+      toast.error(
+        "Unable to load location at the moment. Please try again later.",
+        tosterCustomStyles
+      );
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

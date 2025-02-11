@@ -4,11 +4,11 @@ import clsx from "clsx";
 import { useId } from "react";
 import { Form, Formik } from "formik";
 
-import { updateLocation } from "../../redux/auth/slice";
 import { selectLocations } from "../../redux/locations/selectors.js";
 
 import s from "./SearchBox.module.css";
 import { selectLocation } from "../../redux/auth/selectors.js";
+import { getLocation } from "../../redux/locations/operations.js";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
@@ -31,8 +31,7 @@ const SearchBox = () => {
 
   const handleSubmit = (values) => {
     const { location } = values;
-
-    dispatch(updateLocation({ name: location.label, _id: location.value }));
+    dispatch(getLocation({ id: location.value }));
   };
 
   return (

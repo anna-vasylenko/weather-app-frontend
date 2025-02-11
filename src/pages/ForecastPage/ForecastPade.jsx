@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import Navigation from "../../components/Navigation/Navigation";
@@ -10,15 +10,20 @@ import Button from "../../components/Button/Button";
 import Instruction from "../../components/Instruction/Instruction";
 
 import { getLocations } from "../../redux/locations/operations";
+import { selectLocations } from "../../redux/locations/selectors";
+
 import s from "./ForecastPage.module.css";
 
 const ForecastPade = () => {
   const dispatch = useDispatch();
+  const locations = useSelector(selectLocations);
   const [showForecast, setShowForecast] = useState(false);
 
   useEffect(() => {
-    dispatch(getLocations());
-  }, [dispatch]);
+    if (locations.length === 0) {
+      dispatch(getLocations());
+    }
+  }, [dispatch, locations]);
 
   return (
     <div className={s.page}>

@@ -5,14 +5,15 @@ import {
   refreshUserThunk,
   registerThunk,
 } from "./operations";
+import { getLocation } from "../locations/operations";
 
 const initialState = {
   user: {
     id: null,
     name: null,
     email: null,
+    location: null,
   },
-  location: null,
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -21,11 +22,6 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {
-    updateLocation(state, action) {
-      state.location = action.payload;
-    },
-  },
   extraReducers: (builder) => {
     builder
       .addCase(registerThunk.fulfilled, (state, action) => {
@@ -45,6 +41,9 @@ const authSlice = createSlice({
       })
       .addCase(logoutThunk.fulfilled, () => {
         return initialState;
+      })
+      .addCase(getLocation.fulfilled, (state, action) => {
+        state.user.location = action.payload;
       })
       .addCase(refreshUserThunk.pending, (state) => {
         state.isRefreshing = true;

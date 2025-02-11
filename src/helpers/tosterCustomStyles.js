@@ -6,21 +6,19 @@ export const tosterCustomStyles = {
   draggable: true,
 
   style: {
-    backgroundColor: " #fbfbfb",
-    color: "#623f8b",
+    backgroundColor: " #fff",
+    color: "#898f9f",
     fontSize: "16px",
     padding: "10px 40px",
-    fontFamily: "Poppins, sans-serif",
-    borderRadius: "8px",
+    fontFamily: "Montserrat, sans-serif",
   },
   theme: "colored",
 };
 
-export const toastContainerStyles = {
+export const tosterContainerStyles = {
   position: "bottom-center",
   padding: "10px",
   color: "white",
-  fontFamily: "Poppins, sans-serif",
-  borderRadius: "8px",
+  fontFamily: "Montserrat, sans-serif",
   width: "400px",
 };

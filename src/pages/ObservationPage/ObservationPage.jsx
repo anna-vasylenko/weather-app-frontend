@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 import AddForm from "../../components/AddForm/AddForm";
@@ -9,14 +9,21 @@ import ObservationList from "../../components/ObservationList/ObservationList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import { getObservations } from "../../redux/observations/operations";
 import { getLocations } from "../../redux/locations/operations";
+import { selectLocations } from "../../redux/locations/selectors";
 
 import s from "./ObservationPage.module.css";
 
 const ObservationPage = () => {
   const dispatch = useDispatch();
+  const locations = useSelector(selectLocations);
 
   useEffect(() => {
-    dispatch(getLocations());
+    if (locations.length === 0) {
+      dispatch(getLocations());
+    }
+  }, [dispatch, locations]);
+
+  useEffect(() => {
     dispatch(getObservations());
   }, [dispatch]);
 
