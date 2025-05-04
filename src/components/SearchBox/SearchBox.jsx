@@ -31,7 +31,7 @@ const SearchBox = () => {
 
   const handleSubmit = (values) => {
     const { location } = values;
-    dispatch(getLocation({ id: location.value }));
+    dispatch(getLocation(location.value));
   };
 
   return (

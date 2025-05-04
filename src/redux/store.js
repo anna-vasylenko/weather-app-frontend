@@ -14,6 +14,7 @@ import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth/slice";
 import { locationsReducer } from "./locations/slice";
 import { observationsReducer } from "./observations/slice";
+import { weatherReducer } from "./weather/slice";
 
 const persistConfig = {
   key: "auth",
@@ -29,6 +30,7 @@ export const store = configureStore({
     auth: persistedReducer,
     locations: locationsReducer,
     observations: observationsReducer,
+    weather: weatherReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

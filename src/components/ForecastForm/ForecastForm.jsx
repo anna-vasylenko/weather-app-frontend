@@ -4,9 +4,10 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import Select from "react-select";
 import clsx from "clsx";
 
+import { getLocationInfo } from "../../redux/locations/operations";
+import { selectLocation } from "../../redux/auth/selectors";
 import { selectLocations } from "../../redux/locations/selectors";
 import { addForecastSchema } from "../../helpers/addForecastSchema";
-import { selectLocation } from "../../redux/auth/selectors";
 
 import s from "./ForecastForm.module.css";
 
@@ -34,7 +35,7 @@ const ForecastForm = ({ onSubmitSuccess }) => {
     const { location, days } = values;
 
     console.log({ locationId: location.value, days });
-    action.resetForm();
+    dispatch(getLocationInfo(location.value));
     onSubmitSuccess();
   };
 

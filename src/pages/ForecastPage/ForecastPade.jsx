@@ -10,20 +10,39 @@ import Button from "../../components/Button/Button";
 import Instruction from "../../components/Instruction/Instruction";
 
 import { getLocations } from "../../redux/locations/operations";
-import { selectLocations } from "../../redux/locations/selectors";
+import {
+  selectForecastLocation,
+  selectLocations,
+} from "../../redux/locations/selectors";
 
 import s from "./ForecastPage.module.css";
+import { getCurrentWeather } from "../../redux/weather/operations";
+import { selectUser } from "../../redux/auth/selectors";
 
 const ForecastPade = () => {
   const dispatch = useDispatch();
   const locations = useSelector(selectLocations);
+  const forecastLocation = useSelector(selectForecastLocation);
+  const user = useSelector(selectUser);
   const [showForecast, setShowForecast] = useState(false);
+  const location = forecastLocation ? forecastLocation : user.location;
 
   useEffect(() => {
     if (locations.length === 0) {
       dispatch(getLocations());
     }
   }, [dispatch, locations]);
+
+  useEffect(() => {
+    if (location) {
+      dispatch(
+        getCurrentWeather({
+          latitude: location.latitude,
+          longitude: location.longitude,
+        })
+      );
+    }
+  }, [dispatch, location]);
 
   return (
     <div className={s.page}>
@@ -37,7 +56,7 @@ const ForecastPade = () => {
         )}
       </div>
       <div>
-        <WeatherCard />
+        <WeatherCard location={location.name} />
         {!showForecast && <Instruction />}
         {showForecast && <ForecastTable />}
       </div>
