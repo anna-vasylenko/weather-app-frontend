@@ -1,4 +1,29 @@
-.graph {
+.graphWrapper {
+  max-height: calc(100vh - 420px);
   width: 600px;
-  height: 40vh;
+  overflow: auto;
+  position: relative;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.graphWrapper::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.graphWrapper::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 4px;
+}
+
+.graphWrapper::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-color);
+}
+
+.graph {
+  display: block;
+  min-width: 600px;
+  max-height: 100%;
+  height: auto;
 }

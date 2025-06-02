@@ -36,7 +36,7 @@ const ForecastForm = ({ onSubmitSuccess }) => {
 
     console.log({ locationId: location.value, days });
     dispatch(getLocationInfo(location.value));
-    onSubmitSuccess();
+    onSubmitSuccess(days);
   };
 
   return (

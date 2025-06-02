@@ -1,11 +1,9 @@
-import graph from "../../images/graph.png";
-
 import s from "./Graph.module.css";
 
-const Graph = () => {
+const Graph = ({ src }) => {
   return (
-    <div>
-      <img className={s.graph} alt="logo" src={graph} />
+    <div className={s.graphWrapper}>
+      <img className={s.graph} alt="Прогноз" src={src} />
     </div>
   );
 };

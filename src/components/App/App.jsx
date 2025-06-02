@@ -17,7 +17,7 @@ const ObservationPage = lazy(() =>
   import("../../pages/ObservationPage/ObservationPage")
 );
 const ForecastPage = lazy(() =>
-  import("../../pages/ForecastPage/ForecastPade")
+  import("../../pages/ForecastPage/ForecastPage")
 );
 const Layout = lazy(() => import("../../components/Layout/Layout"));
 
