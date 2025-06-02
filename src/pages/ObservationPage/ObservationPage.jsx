@@ -54,7 +54,7 @@ const ObservationPage = () => {
         <AddForm />
       </div>
       <div>
-        <WeatherCard location={location.name} />
+        <WeatherCard location={location?.name} />
         <p className={s.text}>Мої спостереження :</p>
         <ObservationList />
       </div>

@@ -3,9 +3,21 @@ import dayjs from "dayjs";
 import s from "./ObservationCard.module.css";
 
 const ObservationCard = ({ observation }) => {
-  const formattedDate = observation.time
-    ? dayjs(observation.time).format("DD-MM-YYYY")
-    : "-";
+  let formattedDate = "";
+
+  if (observation?.time) {
+    const date = new Date(observation.time);
+    formattedDate = date
+      .toLocaleString("uk-UA", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      })
+      .replace(",", "");
+  }
 
   return (
     <div className={s.card}>

@@ -62,7 +62,7 @@ const AddForm = () => {
                   setSelectedDate(date);
                   setFieldValue(
                     "date",
-                    date ? dayjs(date).format("YYYY-MM-DD") : null
+                    date ? dayjs(date).toISOString() : null
                   );
                 }}
               />

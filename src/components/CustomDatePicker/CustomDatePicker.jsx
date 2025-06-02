@@ -1,9 +1,8 @@
 import { useState } from "react";
 import dayjs from "dayjs";
-import { DatePicker } from "@mui/x-date-pickers";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-
 import "./CustomDatePicker.css";
 
 const CustomDatePicker = ({ value, onChange }) => {
@@ -21,13 +20,14 @@ const CustomDatePicker = ({ value, onChange }) => {
   return (
     <div>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker
-          value={dayjs(value)}
+        <DateTimePicker
+          value={value ? dayjs(value) : null}
           onChange={onChange}
-          disableFuture={true}
+          disableFuture
           open={open}
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
+          maxDateTime={dayjs()}
           slotProps={{
             textField: {
               variant: "standard",
@@ -39,7 +39,6 @@ const CustomDatePicker = ({ value, onChange }) => {
               onFocus: handleFocus,
             },
           }}
-          maxDate={dayjs().endOf("day")}
           className="input"
         />
       </LocalizationProvider>

@@ -56,7 +56,7 @@ const ForecastPade = () => {
         )}
       </div>
       <div>
-        <WeatherCard location={location.name} />
+        <WeatherCard location={location?.name} />
         {!showForecast && <Instruction />}
         {showForecast && <ForecastTable />}
       </div>

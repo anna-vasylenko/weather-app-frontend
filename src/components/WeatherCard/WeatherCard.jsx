@@ -4,23 +4,26 @@ import s from "./WeatherCard.module.css";
 
 const WeatherCard = ({ location }) => {
   const weather = useSelector(selectCurrentWeather) || {};
+  let formattedDate = "";
 
-  const date = new Date(weather.time);
-  date.setHours(date.getHours() + 3);
-  const formattedDate = date
-    .toLocaleString("uk-UA", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    })
-    .replace(",", "");
+  if (weather?.time) {
+    const date = new Date(weather.time);
+    date.setHours(date.getHours() + 3);
+    formattedDate = date
+      .toLocaleString("uk-UA", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      })
+      .replace(",", "");
+  }
   return (
     <div className={s.card}>
       <p className={s.date}>{location || ""}</p>
-      <p className={s.date}>{formattedDate || ""}</p>
+      <p className={s.date}>{formattedDate || "Локацію не обрано"}</p>
 
       <ul className={s.list}>
         <li className={s.item}>

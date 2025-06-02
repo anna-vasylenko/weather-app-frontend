@@ -19,7 +19,7 @@ const SearchBox = () => {
 
   const locationsOptions = locations.map((location) => ({
     value: location._id,
-    label: location.name,
+    label: location?.name,
   }));
 
   const initialValues = {
