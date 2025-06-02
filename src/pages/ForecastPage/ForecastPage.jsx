@@ -19,18 +19,19 @@ import {
 import s from "./ForecastPage.module.css";
 import { getCurrentWeather } from "../../redux/weather/operations";
 import { selectUser } from "../../redux/auth/selectors";
+import { selectObservations } from "../../redux/observations/selectors";
 
 const ForecastPage = () => {
   const dispatch = useDispatch();
   const locations = useSelector(selectLocations);
   const forecastLocation = useSelector(selectForecastLocation);
   const user = useSelector(selectUser);
+  const observations = useSelector(selectObservations);
   const location = forecastLocation ? forecastLocation : user.location;
 
   const [forecastData, setForecastData] = useState([]);
   const [showForecast, setShowForecast] = useState(false);
   const [daysRequested, setDaysRequested] = useState(null);
-  const [hasObservations, setHasObservations] = useState(false);
 
   useEffect(() => {
     if (locations.length === 0) {
@@ -64,7 +65,7 @@ const ForecastPage = () => {
     }
 
     if (daysRequested >= 10 && daysRequested <= 20) {
-      return hasObservations
+      return observations
         ? "weather_forecast_14.csv"
         : "weather_forecast_14_without.csv";
     }
@@ -80,7 +81,7 @@ const ForecastPage = () => {
       return "/assets/weather_forecast_7_without.png";
     }
     if (daysRequested >= 10 && daysRequested <= 20) {
-      return hasObservations
+      return observations
         ? "/assets/weather_forecast_14.png"
         : "/assets/weather_forecast_14_without.png";
     }
@@ -101,7 +102,7 @@ const ForecastPage = () => {
         },
       });
     } catch (error) {
-      console.error("Помилка при зчитуванні CSV:", error);
+      console.error("Помилка при зчитуванні даних:", error);
     }
   };
 

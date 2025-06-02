@@ -27,3 +27,9 @@
   max-height: 100%;
   height: auto;
 }
+
+@media (min-width: 1440px) {
+  .graphWrapper {
+    width: 48vw;
+  }
+}
