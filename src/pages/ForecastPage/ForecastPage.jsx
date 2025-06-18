@@ -61,8 +61,8 @@ const ForecastPage = () => {
     if (daysRequested > 1 && daysRequested < 10) return "7";
     if (daysRequested >= 10 && daysRequested < 20) return "14";
     if (daysRequested >= 20 && daysRequested < 90) return "60";
-    if (daysRequested >= 90 && daysRequested < 365) return "365";
-    if (daysRequested >= 365 && daysRequested < 730) return "730";
+    if (daysRequested >= 90 && daysRequested < 400) return "365";
+    if (daysRequested >= 400 && daysRequested < 730) return "730";
     return "730";
   };
 
