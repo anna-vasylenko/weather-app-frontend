@@ -50,42 +50,33 @@ const ForecastPage = () => {
     }
   }, [dispatch, location]);
 
+  const isPonornytsia = location?.name?.toLowerCase() === "понорниця";
+  const hasObservations = Boolean(observations && observations.length > 0);
+
+  const getFilePrefix = () => (isPonornytsia ? "p_" : "");
+  const getFileSuffix = () => (hasObservations ? "" : "_w");
+
+  const getForecastCode = () => {
+    if (daysRequested === 1) return "1";
+    if (daysRequested > 1 && daysRequested < 10) return "7";
+    if (daysRequested >= 10 && daysRequested < 20) return "14";
+    if (daysRequested >= 20 && daysRequested < 90) return "60";
+    if (daysRequested >= 90 && daysRequested < 365) return "365";
+    if (daysRequested >= 365 && daysRequested < 730) return "730";
+    return "730";
+  };
+
   const handleForecastSubmit = (days) => {
     setDaysRequested(Number(days));
     setShowForecast(true);
   };
 
   const getCsvFileName = () => {
-    if (daysRequested === 1) {
-      return "weather_forecast_1_without.csv";
-    }
-
-    if (daysRequested > 1 && daysRequested < 10) {
-      return "weather_forecast_7_without.csv";
-    }
-
-    if (daysRequested >= 10 && daysRequested <= 20) {
-      return observations
-        ? "weather_forecast_14.csv"
-        : "weather_forecast_14_without.csv";
-    }
-
-    return "weather_forecast_365.csv";
+    return `${getFilePrefix()}weather_forecast_${getForecastCode()}${getFileSuffix()}.csv`;
   };
 
   const getImagePath = () => {
-    if (daysRequested === 1) {
-      return "/assets/weather_forecast_1_without.png";
-    }
-    if (daysRequested > 1 && daysRequested < 10) {
-      return "/assets/weather_forecast_7_without.png";
-    }
-    if (daysRequested >= 10 && daysRequested <= 20) {
-      return observations
-        ? "/assets/weather_forecast_14.png"
-        : "/assets/weather_forecast_14_without.png";
-    }
-    return "/assets/weather_forecast_365.png";
+    return `/assets/${getFilePrefix()}weather_forecast_${getForecastCode()}${getFileSuffix()}.png`;
   };
 
   const loadCsv = async () => {
